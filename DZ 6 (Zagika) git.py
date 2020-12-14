@@ -59,8 +59,11 @@ print(my_list_1)
 # # которые встречаются в строке только один раз.
 #
 my_str = "создать список"
-my_list = [symbol for symbol in my_str if my_str.count(symbol) == 1]
+# my_list = [symbol for symbol in my_str if my_str.count(symbol) == 1]
+# print(my_list)
+my_list = [symbol for symbol in set(my_str) if my_str.count(symbol) == 1]
 print(my_list)
+
 #
 #
 #

@@ -53,23 +53,3 @@ string_site = ''.join(choice(string.ascii_lowercase) for _ in range(randint(5, 7
 mails = create_mails(list_names, string_site)
 print("3) return mail: ", mails)
 
-# str(choice(list_domains))
-# def create_mails(some_list: list, list_domains: list):
-#     for item in (some_list):
-#         item = item + "." + str((randint(100, 999))) + "@" + ''.join(choice(string.ascii_lowercase) for _ in range(randint(5, 7))) + "." + str(choice(list_domains))
-#     return item
-#
-# item = create_mails(result_names, result_domains)
-# print("3) return mail: ", item)
-
-# for names in result_names:
-#     names = names + "." + str((randint(100, 999))) + "@" + ''.join(choice(string.ascii_lowercase) for _ in range(randint(5, 7))) + "." + str(choice(result_domains))
-#     print(names)
-# print(names)
-# print(choice(result_names))
-# print(".")
-# print(randint(100, 999))
-# print("@")
-# print(''.join(choice(string.ascii_lowercase) for _ in range(randint(5, 7))))
-# print(".")
-# print(choice(result_domains))
