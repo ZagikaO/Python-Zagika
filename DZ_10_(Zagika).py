@@ -1,5 +1,6 @@
 import json
 import re
+import string
 
 ############################################################
 # 1. Необходимо написать функцию, которая считает эти данные из файла. Параметр функции - имя файла.
@@ -37,7 +38,7 @@ print(sorted_file_by_date)
 # ############################################################
 # # 4. Написать функцию сортировки по количеству слов в поле "text"
 def sort_by_len_text(line: dict) -> int:
-    text = "".join(re.findall(r"[^0-9]+", line["text"]))
+    text = "".join(re.findall(r"[string.ascii_lowercase, string.ascii_uppercase]", line["text"]))
     text = text.split()
     return len(text)
 
