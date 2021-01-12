@@ -173,6 +173,7 @@ def write_csv(filename, csv_list):
 
 
 def generate_and_write_file(filename):
+    """Create files with data"""
     extension = filename.split(".")[-1]
     if extension == "txt":
         text = transformation_with_line(result)
