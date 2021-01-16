@@ -1,7 +1,11 @@
 import re
 import requests
 import json
-
+import csv
+import random
+# quote_text = quote["quoteText"]
+# quote_author = quote["quoteAuthor"]
+# quote_url = quote["quoteLink"]
 # Все пункты сделать как отдельные функции(можно создавать дополнительные вспомагательные функции)
 #
 # 1. Написать функцию, которая принимает в виде параметра целое число - количество цитат (см. урок 12).
@@ -12,23 +16,23 @@ import json
 # Перед сохранением в csv, записи отсортировать по автору (в алфавитном порядке).
 
 
-url = "http://api.forismatic.com/api/1.0/"
-params = {"method": "getQuote",
-          "format": "json",
-          "key": 1,
-          "lang": "ru"}
-r = requests.get(url, params=params)
-quote = r.json()
-# quote_text = quote["quoteText"]
-# quote_author = quote["quoteAuthor"]
-# quote_url = quote["quoteLink"]
-print(quote)
+def get_quote():
+    url = "http://api.forismatic.com/api/1.0/"
+    params = {"method": "getQuote",
+              "format": "json",
+              "key": random.randint(2, 100),
+              "lang": "ru"}
+    r = requests.get(url, params=params)
+    quote = r.json()
+    return quote
 
 
-def create_quote_list(count_quote=3):
+def create_quote_list(count_quote=15) -> list:
     quote_list = []
     for item in range(count_quote):
-        quote_list.append([r.json()["quoteAuthor"], r.json()["quoteText"], r.json()["quoteLink"]])
+        quote = get_quote()
+        if quote["quoteAuthor"] != "":
+            quote_list.append([quote["quoteAuthor"], quote["quoteText"], quote["quoteLink"]])
     return quote_list
 
 
@@ -36,13 +40,31 @@ quote_list = create_quote_list()
 print(quote_list)
 
 
-def sort_by_author(quote_list):
+def sort_by_author(quote_list: list) -> list:
     for line in quote_list:
         author = line[0]
         return author
 
 
 sorted_by_Author = sorted(quote_list, key=sort_by_author)
+
+
+def update_list_fieldnames():
+    """Create list"""
+    fieldnames = [["Author", "Quote", 'URL']]
+    for line in sorted_by_Author:
+        fieldnames.append(line)
+    return fieldnames
+
+
+def create_csv_file_with_quotes():
+    """Create csv file with result - list quotes and fieldnames"""
+    with open("quotes.csv", "w", encoding='utf-8') as file:
+        writer = csv.writer(file)
+        writer.writerows(update_list_fieldnames())
+
+
+create_csv_file_with_quotes()
 
 
 # # 2. Дан файл authors.txt

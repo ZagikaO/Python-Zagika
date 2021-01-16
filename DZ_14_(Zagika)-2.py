@@ -4,16 +4,17 @@ from tkinter import *
 
 class My15:
     def __init__(self, size):
+        self._size = size
         self.my_15 = self._generate_15()
         self._row, self._col = self._get_space()
-        self._size = size
+
 
     def _generate_15(self):
         my_15 = []
-        all_values = [str(i) for i in range(1, size*size)] + [""]
+        all_values = [str(i) for i in range(1, self._size*self._size)] + [""]
         random.shuffle(all_values)
-        for row_number in range(size):
-            my_15.append(all_values[size * row_number: size * (row_number + 1)])
+        for row_number in range(self._size):
+            my_15.append(all_values[self._size * row_number: self._size * (row_number + 1)])
         return my_15
 
     def _print_15(self):
@@ -89,6 +90,7 @@ def down(event):
 size = 6
 assert size <= 10, "size not in limit"
 assert size >= 4, "size not in limit"
+
 
 my_15 = My15(size=size)
 root = Tk()

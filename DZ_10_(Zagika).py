@@ -13,7 +13,8 @@ print(mathematician)
 
 # ############################################################
 # # 2. Написать функцию сортировки данных по ФАМИЛИИ в поле "name" (у тех у кого она есть).
-# # Например для Rene Descartes фамилия это Descartes, у Pierre de Fermat - Fermat и т.д.
+# # Например для Rene Descartes фамилия это Desca
+# rtes, у Pierre de Fermat - Fermat и т.д.
 # # Если фамилии нет, то использовать имя, например Euclid.
 def sort_by_name(line: dict) -> str:
     name = line["name"].split()[-1]
