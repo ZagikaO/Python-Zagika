@@ -34,7 +34,7 @@ class My15:
         return row_, col_
 
     def move_down(self):
-        if self._row == size - 1:
+        if self._row == self._size - 1:
             return
         self.my_15[self._row][self._col], self.my_15[self._row + 1][self._col] = self.my_15[self._row + 1][self._col], self.my_15[self._row][self._col]
         self._row += 1
@@ -46,7 +46,7 @@ class My15:
         self._row -= 1
 
     def move_right(self):
-        if self._col == size - 1:
+        if self._col == self._size - 1:
             return
         self.my_15[self._row][self._col], self.my_15[self._row][self._col + 1] = self.my_15[self._row][self._col + 1], self.my_15[self._row][self._col]
         self._col += 1
